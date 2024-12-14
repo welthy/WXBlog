@@ -40,7 +40,7 @@ public class HomeRVAdapter extends RecyclerView.Adapter<CommonViewHolder> {
         if (homeDataBean.getBannerData() != null) {
             holder.mBinding.setVariable(BR.bannerData, homeDataBean.getBannerData());
         } else {
-            holder.mBinding.setVariable(BR.articleData, homeDataBean.getArticleData());
+            holder.mBinding.setVariable(BR.homeArticleData, homeDataBean.getArticleData());
             List<ArticleData.TagsItem> tags = homeDataBean.getArticleData().getTags();
             for (ArticleData.TagsItem tag : tags) {
                 if ("置顶".equals(tag.name)) {

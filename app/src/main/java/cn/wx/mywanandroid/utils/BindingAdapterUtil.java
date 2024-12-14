@@ -21,17 +21,12 @@ import q.rorbin.verticaltablayout.widget.ITabView;
 public class BindingAdapterUtil {
 
     @BindingAdapter("bannerData")
-    public static void setBannerData(MZBannerView bannerView, BannerData bannerData) {
+    public static void setBannerData(MZBannerView<BannerDataItem> bannerView, BannerData bannerData) {
         if (bannerData == null || bannerData.getData() == null) {
             return;
         }
-        List<BannerDataItem> datas = bannerData.getData();
-        bannerView.setPages(datas, new MZHolderCreator<BannerViewHolder>() {
-            @Override
-            public BannerViewHolder createViewHolder() {
-                return new BannerViewHolder();
-            }
-        });
+        List<BannerDataItem> bannerDataItems = bannerData.getData();
+        bannerView.setPages(bannerDataItems, (MZHolderCreator<BannerViewHolder>) BannerViewHolder::new);
         bannerView.start();
     }
 
@@ -47,7 +42,7 @@ public class BindingAdapterUtil {
     @BindingAdapter("navigationTabData")
     public static void navigationTabData(VerticalTabLayout tabLayout, List<NavigationTabDataItem> datas) {
 
-        if (datas == null || datas.size() <= 0) {
+        if (datas == null || datas.size() == 0) {
             return;
         }
         tabLayout.setTabAdapter(new SimpleTabAdapter() {
