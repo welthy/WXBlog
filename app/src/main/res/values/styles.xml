@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ToolbarTheme" parent="Theme.MyWanandroid">
+        <item name="android:background">@color/app_color_theme_6</item>
+    </style>
+</resources>

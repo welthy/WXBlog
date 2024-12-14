@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="http_response_error" translatable="false">Response错误. %d, %s</string>
+    <string name="http_response_null_body" translatable="false">Response has null body</string>
+    <string name="http_data_explain_error" translatable="false">data explain error</string>
+    <string name="http_token_error" translatable="false">token错误</string>
+    <string name="http_server_out_time" translatable="false">服务器超时</string>
+    <string name="http_server_error" translatable="false">服务器错误</string>
+    <string name="http_network_error" translatable="false">网络异常</string>
+    <string name="http_request_cancel" translatable="false">请求取消</string>
+    <string name="http_response_md5_error" translatable="false">Response的MD5错误</string>
+</resources>

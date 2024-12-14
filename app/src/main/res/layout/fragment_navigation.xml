@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cn.wx.mywanandroid.domain.navigation.NavigationRequester"/>
+
+        <variable
+            name="requester"
+            type="NavigationRequester" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.fragments.NavigationFragment">
+
+        <q.rorbin.verticaltablayout.VerticalTabLayout
+            android:id="@+id/navigation_tab"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            app:indicator_color="@color/color_white"
+            app:indicator_gravity="fill"
+            app:tab_height="50dp"
+            app:tab_margin="16dp"
+            app:tab_mode="scrollable"
+            app:navigationTabData="@{requester.tabItemList}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/navigation_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/navigation_tab"/>
+    </RelativeLayout>
+</layout>

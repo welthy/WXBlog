@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="java.util.List"/>
+        <import type="android.util.SparseArray"/>
+        <import type="android.view.View"/>
+
+        <variable
+            name="articleData"
+            type="cn.wx.mywanandroid.data.bean.home.ArticleData.DatasItem" />
+        <variable
+            name="isTopTag"
+            type="Boolean" />
+        <variable
+            name="isNewTag"
+            type="Boolean" />
+        <variable
+            name="isPublicTag"
+            type="Boolean" />
+
+        <variable
+            name="index"
+            type="int" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:id="@+id/ll_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/article_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="置顶"
+                    android:textColor="@color/color_red"
+                    android:background="@drawable/shape_label_red"
+                    android:visibility="@{isTopTag ? View.VISIBLE : View.GONE}"/>
+
+                <TextView
+                    android:id="@+id/article_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="新"
+                    android:textColor="@color/color_red"
+                    android:background="@drawable/shape_label_red"
+                    android:visibility="@{isNewTag ? View.VISIBLE : View.GONE}"/>
+
+                <TextView
+                    android:id="@+id/article_public"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="公众号"
+                    android:textColor="@color/color_green"
+                    android:background="@drawable/shape_label_green"
+                    android:visibility="@{isPublicTag ? View.VISIBLE : View.GONE}"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/article_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{articleData.author}"
+                app:layout_constraintStart_toEndOf="@id/ll_tags"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/article_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@{articleData.niceDate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/article_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="@{articleData.title}"
+                android:gravity="start"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/article_author" />
+
+            <ImageView
+                android:id="@+id/article_collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_collect_no"
+                android:contentDescription="TODO"
+                app:isCollect="@{articleData.collect}"
+                app:layout_constraintBottom_toBottomOf="@+id/article_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/article_title" />
+
+            <TextView
+                android:id="@+id/article_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:text='@{articleData.superChapterName+"-"+articleData.chapterName}'
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/article_title"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>
